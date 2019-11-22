@@ -1,13 +1,13 @@
 import * as fs from 'fs-extra';
 import * as ini from 'ini';
 
-import ICommand from "../types/commands/ICommand";
-import ICommandResult from "../types/commands/ICommandResult";
+import ICommand from '../types/commands/ICommand';
+import ICommandResult from '../types/commands/ICommandResult';
 import IIniObject from '../types/commands/IIniObject';
 import { isNumber } from 'util';
 
 /**
- * 
+ *
  *
  * @export
  * @interface SetCommandArgs
@@ -19,7 +19,7 @@ export interface ISetCommandArgs {
     section: string;
     key: string;
     eval: boolean;
-};
+}
 
 interface ISectionInfo {
     line: number;
@@ -41,7 +41,6 @@ interface ILineInfo {
  * @implements {ICommand<SetCommandArgs>}
  */
 export default class SetCommand implements ICommand<ISetCommandArgs> {
-
     private alterations: Map<ILineInfo, string> = new Map<ILineInfo, string>();
 
     /**
@@ -52,12 +51,12 @@ export default class SetCommand implements ICommand<ISetCommandArgs> {
      * @memberof SetCommand
      */
     public execute(args: ISetCommandArgs): ICommandResult {
-        let result = this.createCommandResult(42, "Unexpected error occurred.");
-        
+        let result = this.createCommandResult(42, 'Unexpected error occurred.');
+
         if (this.isFileValid(args.fileIn)) {
-            let iniObj = this.parse(args.fileIn) as IIniObject;
-            let section = this.extractSection(iniObj, args.section);
-            
+            const iniObj = this.parse(args.fileIn) as IIniObject;
+            const section = this.extractSection(iniObj, args.section);
+
             if (args.eval) {
                 let v = section[args.key];
                 if (isNaN(v) === false) {
@@ -72,7 +71,10 @@ export default class SetCommand implements ICommand<ISetCommandArgs> {
             this.writeFile(iniObj, args.fileOut);
 
             if (args.section !== undefined) {
-                result = this.createCommandResult(0, `Wrote (${args.fileOut}) key '${args.key}' in section '${args.section}' to '${args.value}'.`);
+                result = this.createCommandResult(
+                    0,
+                    `Wrote (${args.fileOut}) key '${args.key}' in section '${args.section}' to '${args.value}'.`,
+                );
             } else {
                 result = this.createCommandResult(0, `Wrote (${args.fileOut}) key '${args.key}' to '${args.value}'.`);
             }
@@ -87,7 +89,7 @@ export default class SetCommand implements ICommand<ISetCommandArgs> {
         return fs.existsSync(path);
     }
 
-    private parse(path: string): Object {
+    private parse(path: string): Record<string, any> {
         let contents = fs.readFileSync(path, 'utf-8');
 
         [this.alterations, contents] = this.parseAlterations(contents);
@@ -95,24 +97,24 @@ export default class SetCommand implements ICommand<ISetCommandArgs> {
     }
 
     private parseAlterations(contents: string): [Map<ILineInfo, string>, string] {
-        let result: [Map<ILineInfo, string>, string] = [new Map<ILineInfo, string>(), contents];
-        
+        const result: [Map<ILineInfo, string>, string] = [new Map<ILineInfo, string>(), contents];
+
         let lastSection: ISectionInfo | undefined = undefined;
-        let lines = contents.split('\n');
-        for(let i = 0; i < lines.length; i++) {
+        const lines = contents.split('\n');
+        for (let i = 0; i < lines.length; i++) {
             const line = lines[i].trim();
             lines[i] = line;
 
             if (line.includes('[') && line.includes(']')) {
                 lastSection = { line: i, section: line };
-                
+
                 continue;
             }
 
             if (line.substr(0, 1) === '+') {
                 const split = line.split(/=(.+)/, 2);
                 const originalKey = split[0];
-                const originalValue = split[1]; 
+                const originalValue = split[1];
                 const newKey = i.toString() + '-' + originalKey.replace('+', '');
 
                 const lineInfo: ILineInfo = {
@@ -121,7 +123,7 @@ export default class SetCommand implements ICommand<ISetCommandArgs> {
                     originalKey: originalKey,
                     originalValue: originalValue,
                 };
-                
+
                 result[0].set(lineInfo, newKey);
                 lines[i] = line.replace(originalKey, newKey);
             }
@@ -137,7 +139,7 @@ export default class SetCommand implements ICommand<ISetCommandArgs> {
         if (section !== undefined) {
             if (section.includes('.')) {
                 const split = section.split('.');
-                for (let s of split) {
+                for (const s of split) {
                     result = result[s];
                 }
             } else {
@@ -150,11 +152,11 @@ export default class SetCommand implements ICommand<ISetCommandArgs> {
 
     private writeFile(iniObj: IIniObject, path: string): void {
         let iniContents = ini.stringify(iniObj);
-        
+
         if (this.alterations.size > 0) {
-            let lines = iniContents.split('\n');
+            const lines = iniContents.split('\n');
             this.alterations.forEach((v, k) => {
-                lines[k.line] = k.originalKey + '=' + k.originalValue; 
+                lines[k.line] = k.originalKey + '=' + k.originalValue;
             });
 
             iniContents = lines.join('\n');

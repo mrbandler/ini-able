@@ -6,27 +6,27 @@
     "configurations": [
         {
             "name": "Debug",
-			"type": "node",
-			"request": "launch",
-			"args": [
-				"${workspaceRoot}/src/cli.ts", 
-				"set", 
-				"v + 1", 
-				"-f", 
-				"./DefaultEngine.ini", 
-				"-s", 
-				"/Script/AndroidRuntimeSettings.AndroidRuntimeSettings", 
-				"-k", 
-				"StoreVersion",
-				"-e"
-			],
-			"runtimeArgs": ["-r", "ts-node/register"],
-			"cwd": "${workspaceRoot}",
-			"protocol": "inspector",
-			"internalConsoleOptions": "openOnSessionStart",
-			"env": {
-				"TS_NODE_IGNORE": "false"
-			}
+            "type": "node",
+            "request": "launch",
+            "args": [
+                "${workspaceRoot}/src/cli.ts",
+                "set",
+                "v + 1",
+                "-f",
+                "./DefaultEngine.ini",
+                "-s",
+                "/Script/AndroidRuntimeSettings.AndroidRuntimeSettings",
+                "-k",
+                "StoreVersion",
+                "-e"
+            ],
+            "runtimeArgs": ["-r", "ts-node/register"],
+            "cwd": "${workspaceRoot}",
+            "protocol": "inspector",
+            "internalConsoleOptions": "openOnSessionStart",
+            "env": {
+                "TS_NODE_IGNORE": "false"
+            }
         }
     ]
 }

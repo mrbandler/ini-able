@@ -1,7 +1,7 @@
-import ICommandResult from "./ICommandResult";
+import ICommandResult from './ICommandResult';
 
 /**
- * Command interface. 
+ * Command interface.
  *
  * @export
  * @interface ICommand
