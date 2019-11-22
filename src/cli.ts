@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import * as pkg from './package.json';
+const pkg = require('../package.json');
 
 import SetCommand, { ISetCommandArgs } from './commands/set.command';
 

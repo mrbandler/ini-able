@@ -7,7 +7,7 @@
     "author": "mrbandler <mrbandler@fivefingergames.com>",
     "license": "MIT",
     "scripts": {
-        "build": "copyfiles ./package.json ./src && tsc && rimraf ./src/package.json",
+        "build": "tsc",
         "start": "ts-node ./src/cli.ts"
     },
     "bin": {
