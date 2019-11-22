@@ -1,13 +1,13 @@
 {
     "name": "ini-able",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Small *.ini command line tool, as I could not find one that did what I wanted.",
     "main": "lib/cli.js",
     "repository": "git@github.com:mrbandler/ini-able.git",
     "author": "mrbandler <mrbandler@fivefingergames.com>",
     "license": "MIT",
     "scripts": {
-        "build": "tsc",
+        "build": "copyfiles ./package.json ./src && tsc && rimraf ./src/package.json",
         "start": "ts-node ./src/cli.ts"
     },
     "bin": {
@@ -29,12 +29,14 @@
         "@typescript-eslint/eslint-plugin": "^2.6.0",
         "@typescript-eslint/parser": "^2.6.0",
         "conventional-changelog-atom": "^2.0.3",
+        "copyfiles": "^2.1.1",
         "eslint": "^6.6.0",
         "eslint-config-prettier": "^6.5.0",
         "eslint-plugin-prettier": "^3.1.1",
         "husky": "^3.0.9",
         "lint-staged": "^9.4.2",
         "prettier": "^1.18.2",
+        "rimraf": "^3.0.0",
         "ts-node": "^8.4.1",
         "typescript": "^3.6.4"
     },
