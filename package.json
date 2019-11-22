@@ -15,7 +15,7 @@
         "ini": "./lib/cli.js"
     },
     "files": [
-        "lib"
+        "/lib/**/*"
     ],
     "devDependencies": {
         "@commitlint/cli": "^8.2.0",
