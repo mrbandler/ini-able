@@ -4,7 +4,7 @@
         "module": "commonjs",
         "lib": ["es6", "es2015", "dom"],
         "sourceMap": false,
-        "outDir": "./lib",
+        "outDir": "./bin",
         "rootDir": "./src",
         "strict": true,
         "esModuleInterop": true,

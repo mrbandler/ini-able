@@ -11,12 +11,11 @@
         "start": "ts-node ./src/cli.ts"
     },
     "bin": {
-        "ini-able": "./lib/cli.js",
-        "ini": "./lib/cli.js"
+        "ini-able": "./bin/cli.js",
+        "ini": "./bin/cli.js"
     },
     "files": [
-        "./lib/**/*.js",
-        "./lib/**/*.json"
+        "bin"
     ],
     "devDependencies": {
         "@commitlint/cli": "^8.2.0",
