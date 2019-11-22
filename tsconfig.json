@@ -13,7 +13,7 @@
         // "sourceMap": true,                     /* Generates corresponding '.map' file. */
         // "outFile": "./",                       /* Concatenate and emit output to single file. */
         "outDir": "./lib" /* Redirect output structure to the directory. */,
-        "rootDir": "./src" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
+        // "rootDir": "./src" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
         // "composite": true,                     /* Enable project compilation */
         // "tsBuildInfoFile": "./",               /* Specify file to store incremental compilation information */
         // "removeComments": true,                /* Do not emit comments to output. */
@@ -47,7 +47,7 @@
         // "types": [],                           /* Type declaration files to be included in compilation. */
         // "allowSyntheticDefaultImports": true,  /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
         "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
         // "preserveSymlinks": true,              /* Do not resolve the real path of symlinks. */
         // "allowUmdGlobalAccess": true,          /* Allow accessing UMD globals from modules. */
 
@@ -58,8 +58,9 @@
         // "inlineSources": true,                 /* Emit the source alongside the sourcemaps within a single file; requires '--inlineSourceMap' or '--sourceMap' to be set. */
 
         /* Experimental Options */
-        // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
-        // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
+        "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
+        "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
     },
+    "include": ["./src/**/*"],
     "exclude": ["node_modules", "lib"]
 }
