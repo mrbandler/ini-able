@@ -1,6 +1,6 @@
 {
     "name": "ini-able",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "Small *.ini command line tool, as I could not find one that did what I wanted.",
     "main": "lib/cli.js",
     "repository": "git@github.com:mrbandler/ini-able.git",
@@ -15,7 +15,8 @@
         "ini": "./lib/cli.js"
     },
     "files": [
-        "/lib/**/*"
+        "./lib/**/*.js",
+        "./lib/**/*.json"
     ],
     "devDependencies": {
         "@commitlint/cli": "^8.2.0",
