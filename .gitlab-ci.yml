@@ -14,7 +14,7 @@ build:
         - yarn build
     artifacts:
         paths:
-            - ./lib
+            - ./bin
 
 ##############################################################
 # Running unit tests.
