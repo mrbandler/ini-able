@@ -57,29 +57,36 @@ export default class SetCommand implements ICommand<ISetCommandArgs> {
             const iniObj = this.parse(args.fileIn) as IIniObject;
             const section = this.extractSection(iniObj, args.section);
 
-            if (args.eval) {
-                let v = section[args.key];
-                if (isNaN(v) === false) {
-                    v = parseFloat(v);
+            if (section !== undefined) {
+                if (args.eval) {
+                    let v = section[args.key];
+                    if (isNaN(v) === false) {
+                        v = parseFloat(v);
+                    }
+
+                    section[args.key] = eval(args.value);
+                } else {
+                    section[args.key] = args.value;
                 }
 
-                section[args.key] = eval(args.value);
-            } else {
-                section[args.key] = args.value;
-            }
+                this.writeFile(iniObj, args.fileOut);
 
-            this.writeFile(iniObj, args.fileOut);
-
-            if (args.section !== undefined) {
-                result = this.createCommandResult(
-                    0,
-                    `Wrote (${args.fileOut}) key '${args.key}' in section '${args.section}' to '${args.value}'.`,
-                );
+                if (args.section !== undefined) {
+                    result = this.createCommandResult(
+                        0,
+                        `Wrote (${args.fileOut}) key '${args.key}' in section '${args.section}' to '${args.value}'.`,
+                    );
+                } else {
+                    result = this.createCommandResult(
+                        0,
+                        `Wrote (${args.fileOut}) key '${args.key}' to '${args.value}'.`,
+                    );
+                }
             } else {
-                result = this.createCommandResult(0, `Wrote (${args.fileOut}) key '${args.key}' to '${args.value}'.`);
+                result = this.createCommandResult(2, `${args.section} could not be found.`);
             }
         } else {
-            result = this.createCommandResult(1, `${args.fileIn + ': could not be found.'}`);
+            result = this.createCommandResult(1, `${args.fileIn}: could not be found.`);
         }
 
         return result;
@@ -141,6 +148,9 @@ export default class SetCommand implements ICommand<ISetCommandArgs> {
                 const split = section.split('.');
                 for (const s of split) {
                     result = result[s];
+                    if (result === undefined) {
+                        break;
+                    }
                 }
             } else {
                 result = result[section];

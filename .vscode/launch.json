@@ -11,14 +11,13 @@
             "args": [
                 "${workspaceRoot}/src/cli.ts",
                 "set",
-                "v + 1",
+                "True",
                 "-f",
-                "./DefaultEngine.ini",
+                "./Config/DefaultEngine.ini",
                 "-s",
-                "/Script/AndroidRuntimeSettings.AndroidRuntimeSettings",
+                "Script/AndroidRuntimeSettings.AndroidRuntimeSettings",
                 "-k",
-                "StoreVersion",
-                "-e"
+                "bBuildForArm64"
             ],
             "runtimeArgs": ["-r", "ts-node/register"],
             "cwd": "${workspaceRoot}",
