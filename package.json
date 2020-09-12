@@ -1,7 +1,7 @@
 {
     "name": "ini-able",
-    "version": "0.1.6",
-    "description": "A able `*.ini` CLI",
+    "version": "1.0.0",
+    "description": "A able *.iniini CLI",
     "main": "lib/cli.js",
     "repository": "git@github.com:mrbandler/ini-able.git",
     "author": "mrbandler <mrbandler@fivefingergames.com>",
