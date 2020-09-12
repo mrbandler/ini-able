@@ -1,4 +1,4 @@
-# ini-able - A able `*.ini` CLI (mostly for Unreal Engine 4 projects)
+# ini-able - A able `*.ini` CLI
 
 [![GitHub license](https://img.shields.io/github/license/mrbandler/ini-able)](https://github.com/mrbandler/ini-able/blob/master/LICENSE) [![Pipeline status](https://gitlab.com/mrbandler/ini-able/badges/master/pipeline.svg)](https://gitlab.com/mrbandler/ini-able/commits/master) [![npm version](https://badge.fury.io/js/ini-able.svg)](https://badge.fury.io/js/ini-able)
 
