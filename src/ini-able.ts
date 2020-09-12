@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-const pkg = require('../package.json');
+import pkg from '../package.json';
 
 import SetCommand, { ISetCommandArgs } from './commands/set.command';
 
+// Set up the 'set' action.
 const program = new Command();
-
 program
     .command('set <value>')
     .description('Sets a property value.')
@@ -29,14 +29,16 @@ program
         const result = command.execute(commandArgs);
 
         console.log(result.message);
-        return result.code;
+        process.exit(result.code);
     });
 
+// Default program values.
 program
     .version(pkg.version)
     .description(pkg.description)
     .parse(process.argv);
 
+// Check CLI arguments.
 if (process.argv.length <= 2) {
     program.help();
 }

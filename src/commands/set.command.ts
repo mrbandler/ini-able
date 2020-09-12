@@ -4,10 +4,9 @@ import * as ini from 'ini';
 import ICommand from '../types/commands/ICommand';
 import ICommandResult from '../types/commands/ICommandResult';
 import IIniObject from '../types/commands/IIniObject';
-import { isNumber } from 'util';
 
 /**
- *
+ * Set command arguments.
  *
  * @export
  * @interface SetCommandArgs
@@ -21,11 +20,21 @@ export interface ISetCommandArgs {
     eval: boolean;
 }
 
+/**
+ * Section info for parsed alternations.
+ *
+ * @interface ISectionInfo
+ */
 interface ISectionInfo {
     line: number;
     section: string;
 }
 
+/**
+ * Line info for parsed alternations.
+ *
+ * @interface ILineInfo
+ */
 interface ILineInfo {
     line: number;
     originalKey: string;
@@ -92,17 +101,41 @@ export default class SetCommand implements ICommand<ISetCommandArgs> {
         return result;
     }
 
+    /**
+     * Checks whether a given file path leads to a valid file on disk.
+     *
+     * @private
+     * @param {string} path File path to check
+     * @returns {boolean} Flag, whether the file is valid
+     * @memberof SetCommand
+     */
     private isFileValid(path: string): boolean {
         return fs.existsSync(path);
     }
 
-    private parse(path: string): Record<string, any> {
+    /**
+     * Parses a ini files content with a given file path.
+     *
+     * @private
+     * @param {string} path File path for the *.ini file to parse
+     * @returns {IIniObject} Parsed *.ini values as a JS object
+     * @memberof SetCommand
+     */
+    private parse(path: string): IIniObject {
         let contents = fs.readFileSync(path, 'utf-8');
 
         [this.alterations, contents] = this.parseAlterations(contents);
         return ini.parse(contents);
     }
 
+    /**
+     * Parses alternation the default *.ini parser can't handle.
+     *
+     * @private
+     * @param {string} contents *.ini file contents to parse
+     * @returns {[Map<ILineInfo, string>, string]} Tuple of a map of alternations and the given the modified *.ini contents for further parsing
+     * @memberof SetCommand
+     */
     private parseAlterations(contents: string): [Map<ILineInfo, string>, string] {
         const result: [Map<ILineInfo, string>, string] = [new Map<ILineInfo, string>(), contents];
 
@@ -140,6 +173,15 @@ export default class SetCommand implements ICommand<ISetCommandArgs> {
         return result;
     }
 
+    /**
+     * Extracts a section from a given *.ini object.
+     *
+     * @private
+     * @param {IIniObject} iniObj *.ini object to extract the section from
+     * @param {string} section Name of the section to extract
+     * @returns {IIniObject} Sub *.ini object representing the extracted section, if section is not found or section is undefined input object is returned
+     * @memberof SetCommand
+     */
     private extractSection(iniObj: IIniObject, section: string): IIniObject {
         let result = iniObj;
 
@@ -160,12 +202,20 @@ export default class SetCommand implements ICommand<ISetCommandArgs> {
         return result;
     }
 
+    /**
+     * Writes a given *.ini object back to a file.
+     *
+     * @private
+     * @param {IIniObject} iniObj *.ini object to write
+     * @param {string} path File path of the file to write to
+     * @memberof SetCommand
+     */
     private writeFile(iniObj: IIniObject, path: string): void {
         let iniContents = ini.stringify(iniObj);
 
         if (this.alterations.size > 0) {
             const lines = iniContents.split('\n');
-            this.alterations.forEach((v, k) => {
+            this.alterations.forEach((_, k) => {
                 lines[k.line] = k.originalKey + '=' + k.originalValue;
             });
 
@@ -175,6 +225,15 @@ export default class SetCommand implements ICommand<ISetCommandArgs> {
         fs.writeFileSync(path, iniContents);
     }
 
+    /**
+     * Creates a command result with a given code and a message.
+     *
+     * @private
+     * @param {number} code Result code (success: 0, error: anything else then 0)
+     * @param {string} message Result message
+     * @returns {ICommandResult} Created command result
+     * @memberof SetCommand
+     */
     private createCommandResult(code: number, message: string): ICommandResult {
         return { code, message };
     }
