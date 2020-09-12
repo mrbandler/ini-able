@@ -35,6 +35,8 @@ The problem with Unreal Engine 4 `*.ini` files are the following entries:
 
 Standard parsers cannot handle the `+` in front of the actual key. **ini-able** midigates that by parsing Unreal Engine 4 alternations before hand and converting it to a form a standard `*.ini` parser can use. After a successful operation **ini-able** converts the alternations back to Unreal Engine 4 usable form.
 
+Our main use case here at [fivefingergames GmbH](https://fivefingergames.com) is the automated build process of our Unreal Engine 4 projects, with **ini-able** we can switch the needed values within the projects `*.ini` files to perform our desired build.
+
 ## 2. Installation
 
 The CLI can easily be installed over [npm](https://www.npmjs.com/) (Node Package Manager). Which can be installed by installing [nodejs](https://nodejs.org/).
