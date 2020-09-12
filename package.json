@@ -1,11 +1,29 @@
 {
     "name": "ini-able",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A able *.iniini CLI",
     "main": "lib/cli.js",
     "repository": "git@github.com:mrbandler/ini-able.git",
     "author": "mrbandler <mrbandler@fivefingergames.com>",
     "license": "MIT",
+    "readme": "README.md",
+    "bugs": {
+        "url": "https://github.com/mrbandler/cds-routing-handlers/issues"
+    },
+    "tags": [
+        "ini",
+        "unreal-engine-4",
+        "unreal-engine",
+        "unreal",
+        "engine",
+        "ue4",
+        "ci",
+        "cd",
+        "ci-cd",
+        "continous-integration",
+        "continous-delivery",
+        "build-automation"
+    ],
     "scripts": {
         "build": "tsc --build src",
         "start": "ts-node ./src/ini-able.ts"
