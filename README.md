@@ -1,6 +1,8 @@
 # A able `*.ini` CLI
 
-[![GitHub license](https://img.shields.io/github/license/mrbandler/ini-able)](https://github.com/mrbandler/ini-able/blob/master/LICENSE) [![Pipeline status](https://gitlab.com/mrbandler/ini-able/badges/master/pipeline.svg)](https://gitlab.com/mrbandler/ini-able/commits/master) [![npm version](https://badge.fury.io/js/ini-able.svg)](https://badge.fury.io/js/ini-able)
+[![GitHub license](https://img.shields.io/github/license/mrbandler/ini-able)](https://github.com/mrbandler/ini-able/blob/master/LICENSE)
+[![Actions status](https://github.com/mrbandler/ini-able/workflows/build/badge.svg)](https://github.com/mrbandler/ini-able/actions)
+[![npm version](https://badge.fury.io/js/ini-able.svg)](https://badge.fury.io/js/ini-able)
 
 [![Donate with Bitcoin](https://en.cryptobadges.io/badge/micro/3LTBGYAHQCDE4ZbEiTreJjzgnsDhY6X2D2)](https://en.cryptobadges.io/donate/3LTBGYAHQCDE4ZbEiTreJjzgnsDhY6X2D2)
 [![Donate with Litecoin](https://en.cryptobadges.io/badge/micro/LcHsJH13A8PmHJQwpbWevGUebZwhWNMXgS)](https://en.cryptobadges.io/donate/LcHsJH13A8PmHJQwpbWevGUebZwhWNMXgS)
