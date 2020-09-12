@@ -8,11 +8,11 @@
     "license": "MIT",
     "scripts": {
         "build": "tsc --build src",
-        "start": "ts-node ./src/cli.ts"
+        "start": "ts-node ./src/ini-able.ts"
     },
     "bin": {
-        "ini-able": "./bin/cli.js",
-        "ini": "./bin/cli.js"
+        "ini-able": "./bin/ini-able.js",
+        "ini": "./bin/ini-able.js"
     },
     "files": [
         "bin"

@@ -5,5 +5,5 @@
  * @interface IIniObject
  */
 export default interface IIniObject {
-    [key: string]: unknown;
+    [key: string]: any;
 }
