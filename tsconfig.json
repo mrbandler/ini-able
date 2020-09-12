@@ -1,16 +1,10 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "lib": ["es6", "es2015", "dom"],
-        "sourceMap": false,
-        "outDir": "./bin",
-        "rootDir": "./src",
-        "strict": true,
-        "esModuleInterop": true,
+        "outDir": ".",
+        "rootDir": ".",
+        "composite": true,
         "resolveJsonModule": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "forceConsistentCasingInFileNames": true
-    }
+        "esModuleInterop": true
+    },
+    "files": ["package.json"]
 }

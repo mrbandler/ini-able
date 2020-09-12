@@ -7,7 +7,7 @@
     "author": "mrbandler <mrbandler@fivefingergames.com>",
     "license": "MIT",
     "scripts": {
-        "build": "tsc",
+        "build": "tsc --build src",
         "start": "ts-node ./src/cli.ts"
     },
     "bin": {

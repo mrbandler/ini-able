@@ -13,9 +13,9 @@
                 "set",
                 "True",
                 "-f",
-                "./Config/DefaultEngine.ini",
+                "./Test.ini",
                 "-s",
-                "Script/AndroidRuntimeSettings.AndroidRuntimeSettings",
+                "/Script/AndroidRuntimeSettings.AndroidRuntimeSettings",
                 "-k",
                 "bBuildForArm64"
             ],
