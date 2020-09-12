@@ -86,13 +86,13 @@ Options:
 
 ### Examples
 
-All examples will based on the [`Test.ini`](https://github.com/mrbandler/ini-able/blob/master/Test.ini), which is a `*.ini` file from a Unreal Engine 4 Project.
+All examples will be based on the [`Test.ini`](https://github.com/mrbandler/ini-able/blob/master/Test.ini), which is a `*.ini` file from an Unreal Engine 4 project.
 
 ### Basic Example
 
 In this example we will change a key on the file level section.
 
-Given following `*.ini` contents:
+Given the following `*.ini` contents:
 
 ```ini
 bAllowControllers=True
@@ -105,7 +105,7 @@ We execute the following command:
 $ ini-able set False -f ./Test.ini -k bAllowControllers
 ```
 
-Result:
+Which results in:
 
 ```ini
 bAllowControllers=False
@@ -116,7 +116,7 @@ bUseRemoteAsVirtualJoystick=True
 
 In this example we will change a key on a specific section.
 
-Given following `*.ini` contents:
+Given the following `*.ini` contents:
 
 ```ini
 [URL]
@@ -141,7 +141,7 @@ We execute the following command:
 $ ini-able set False -f ./Test.ini -s "/Script/IOSRuntimeSettings.IOSRuntimeSettings" -k bAllowControllers
 ```
 
-Result:
+Which results in:
 
 ```ini
 [URL]
@@ -203,7 +203,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-```
-
-```
